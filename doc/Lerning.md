@@ -1,17 +1,11 @@
-# External Funktion 
-## gettimeofday
 
-- `int gettimeofday(struct timeval *tv, struct timezone *tz);
-    - `struct timeval` -> enthält secunden udn Millisekunden
-### Example time messung 
---> link (gettimeoftoday)
 
-## Unterschied zwischen Thread und Process 
+# Unterschied zwischen Thread und Process 
 - Ein **Process** ist fuer sich isoliert und abgeschlossen. Eine <u>CPU</u> kann immer <u>nur einen Process</u> bearbeiten. Das bedeutet wenn gibt es nur eine CPU wird Multitasking durch "hin und her" Springen zwischen den Processen gemanaget.
 
 - Ein oder mehrer **Thread** sind ein Bestandteil eines Processes. Da sie im Gegensatz zu den Processen nicht Isoliert sind kann ein Fehlerhafter Thread auswirkungen auf die anderen Threads in einem Process haben. 
 
-##  Links
+### Übersicht 
 
 
 | Aspekt               | Prozesse                                    | Threads                                   |
@@ -40,3 +34,15 @@
 | **Sichtbarkeit**        | Betriebssystem hat volle Kontrolle und Sichtbarkeit | Betriebssystem hat oft keine direkte Kenntnis von User-Level Threads, behandelt sie als normale Anwendungsprozesse |
 
 ![user- vs kernel thread](pic/user_vs_kernel_thread.png)
+
+
+### Probleme bei Multithreading
+
+#### Synchronisation
+- z.B. wenn meherer Threads auf die Selbe ausgabe schrieben kommt es zu vermischter oder unvollständiger Ausgabe --> Verwendung von Mutexe (Mutual Exclusion Locks), Semaphore, oder bedingten Variablen
+
+#### Race Conditions 
+Die Auswirkungen Fehlender Syncronisation sind die Race Conditions. Weil 2 oder mehrer Thread auf die selbe Rescouce zugreifen wollten. 
+
+#### Deadlocks
+Zustand wenn Processe oder Threads durch gegenseitig Blockierung in Ihrem jeweiligen Zustand gefangen sind. z.B. duch das gegenseitige Warten das diese Ihrer Resourcen Freigeben. 
