@@ -1,9 +1,9 @@
 # ToDo
 
 - [x] Ich habe mir von GPT die Mutex erklären lassen --> Aufschreiben und dokumetieren 
-- [ ] Markdown start
+- [x] Markdown start
 - [ ] Start with a Concept
-    - [ ] Einlesen der Programmargumente in Struckt
+    - [x] Einlesen der Programmargumente in Struckt
     - [ ] Wie handle ich das optionale Argument? 
     - [ ] Gabel = mutex object (einfaches Blocken)
     - [ ] Philsop = 1 Thread 
