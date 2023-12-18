@@ -1,29 +1,33 @@
-# include "../includes/philosophers.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utiles.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rkost <rkost@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/18 16:16:26 by rkost             #+#    #+#             */
+/*   Updated: 2023/12/18 16:38:45 by rkost            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_check_str_of_nbr(char *str)
+#include "../includes/philosophers.h"
+
+long ft_char_to_int (char *str)
 {
-    long l_count; 
-
-    l_count = 0;
-    while (str[l_count] >= '0' && str[l_count] <= '9' && str[l_count] != '\0')
-        l_count++;
-    if (str[l_count] == '\0')
-        return 1;
-    return 0;
-}
-
-unsigned long ft_char_to_int(char *str)
-{
-    int i_count;
-    unsigned long l_ret; 
+    int     i_count;
+    unsigned long   l_ret; 
 
     l_ret = 0;
     i_count = 0; 
     while (str[i_count] != '\0')
     {
         if (str[i_count] >= '0' && str[i_count] <= '9')
-            l_ret = (l_ret + (str[i_count++] - '0')) * 10; 
+            l_ret = (l_ret + (str[i_count++] - '0')) * 10;
+        else
+            return 0;
     }
+    if (str[i_count] == '\0' && l_ret < 1)
+        return 0;
     l_ret /= 10;
     return l_ret;
 }

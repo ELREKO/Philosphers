@@ -1,5 +1,5 @@
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,7 +21,6 @@ t_arguments *ft_read_arguments(int args, char **arg);
 void ft_error(int err_nbr, char *msg, int del, t_arguments **arg);
 
 // utiles.c
-int ft_check_str_of_nbr(char *str);
-unsigned long ft_char_to_int(char *str);
+long ft_char_to_int(char *str);
 void ft_print_arguments(t_arguments *arg);
 #endif
