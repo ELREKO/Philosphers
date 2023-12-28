@@ -4,7 +4,7 @@
 - [x] Markdown start
 - [ ] Start with a Concept
     - [x] Einlesen der Programmargumente in Struckt
-    - [ ] Wie handle ich das optionale Argument? 
+    - [x] Wie handle ich das optionale Argument? 
     - [ ] Gabel = mutex object (einfaches Blocken)
     - [ ] Philsop = 1 Thread 
     - [ ] Hauptprogramm fragt nacheinader die Threads nach dem Zustand des Philsophen

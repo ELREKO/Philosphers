@@ -1,13 +1,15 @@
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-NAME	= philosophers
+NAME	= philo
 
 SRC_PATH = src/
 OBJ_PATH = obj/
 
 SRC  = checking_arguments.c \
 	errorhandling.c \
+	init.c \
 	main.c \
+	safe_function.c \
 	utiles.c
 	
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
