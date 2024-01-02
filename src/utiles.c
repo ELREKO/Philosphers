@@ -6,11 +6,51 @@
 /*   By: rkost <rkost@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 16:16:26 by rkost             #+#    #+#             */
-/*   Updated: 2023/12/28 13:38:47 by rkost            ###   ########.fr       */
+/*   Updated: 2024/01/02 16:17:51 by rkost            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
+
+long gettime(t_time_code time_code)
+{
+    struct timeval tv;
+
+    if (0 != gettimeofday(&tv, NULL))
+        printf("Gettimeofday failled");
+    if (SECOND == time_code)
+        return (tv.tv_sec + (tv.tv_usec / 1e6));
+    else if (MILLISECOND == time_code)
+        return ((tv.tv_sec * 1e3) + (tv.tv_usec / 1e3));
+    else if (MICROSECOND == time_code)
+        return (tv.tv_usec + (tv.tv_sec * 1e6));
+    else 
+        printf("Wrong input to gettime");
+    return (0);
+}
+
+void precise_usleep(long usec, t_arguments *argument)
+{
+    long start;
+    long rem;
+
+    start = gettime(MICROSECOND);
+    while (gettime(MICROSECOND) - start < usec)
+    {
+        if (simualte_finished(argument))
+            break;
+        rem = usec - (gettime(MICROSECOND) - start);
+        if (rem > 1e3)
+            usleep(rem / 2);
+        else
+        {
+            while (gettime(MICROSECOND) - start < usec)
+                ;
+        }
+    }   
+}
+
+
 
 void ft_print_arguments(t_arguments *arg)
 {

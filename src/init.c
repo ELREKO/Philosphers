@@ -10,6 +10,8 @@ void init_data(t_arguments *data)
     data ->l_end_simulation = false;
     data ->forks = safe_malloc(sizeof(t_fork) * data->l_nbr_philosopher, data);
     data ->philos = safe_malloc(sizeof(t_philo) * data ->l_nbr_philosopher , data);
+    safe_mutex_handel(&data->arguments_mutex, INIT);
+    safe_mutex_handel(&data->write_mutex, INIT);
     while (++i_count < data->l_nbr_philosopher)
     {
         safe_mutex_handel(&data->forks[i_count].fork, INIT);
