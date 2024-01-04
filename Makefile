@@ -11,6 +11,7 @@ SRC  = checking_arguments.c \
 	getter_setter.c \
 	init.c \
 	main.c \
+	monitor.c \
 	safe_function.c \
 	syncronisation_utiles.c \
 	utiles.c \

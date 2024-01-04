@@ -20,6 +20,14 @@
 #  define PHILO_MAX 200 
 # endif
 
+# define RST    "\033[0m"      /* Reset to default color */
+# define RED	"\033[1;31m"   /* Bold Red */
+# define G      "\033[1;32m"   /* Bold Green */
+# define Y      "\033[1;33m"   /* Bold Yellow */
+# define B      "\033[1;34m"   /* Bold Blue */
+# define M      "\033[1;35m"   /* Bold Magenta */
+# define C      "\033[1;36m"   /* Bold Cyan */
+# define W      "\033[1;37m"   /* Bold White */
 
 typedef struct s_philo t_philo;
 typedef struct s_fork t_fork;
@@ -63,6 +71,8 @@ typedef struct s_stack
 	 long	l_start_simulation;
 	 bool 	l_end_simulation;
 	 bool	all_threads_ready;
+	 long	threads_running_nbr;
+	 pthread_t	monitor_check_die;
 	 t_mtx	arguments_mutex;
 	 t_mtx	write_mutex;
 	t_fork			*forks; // array of forks
@@ -92,9 +102,10 @@ typedef struct s_fork
 }  t_fork;
 
 // checking_arguments.c 
-t_arguments *ft_read_arguments(int args, char **arg);
+bool ft_read_arguments(t_arguments *argument, int args, char **arg);
 
-// dinner.c 
+// dinner.c
+void thinking(t_philo *philo, bool pre_simulation);
 void dinner_start (t_arguments *argument);
 
 // errorhandling.c
@@ -110,6 +121,9 @@ bool    simualte_finished (t_arguments *argument);
 // init.c
 void init_data(t_arguments *data);
 
+// monitor.c 
+void *ft_monitor_dinner(void *data);
+
 // safer function.c 
 void *safe_malloc(size_t bytes, t_arguments *args);
 void safe_mutex_handel(t_mtx *mutex, t_opccode opcode);
@@ -117,8 +131,12 @@ void safe_thread_handel(pthread_t *thread, void *(foo)(void *), void *data, t_op
 
 // syncronisation_utiles.c
 void wait_all_threads(t_arguments *argument);
+bool ft_all_threads_running (t_mtx *mutex, long *therads, long philo_nbr);
+void ft_increase_long(t_mtx *mutex, long *value);
+void ft_desyncronized_philos(t_philo *philo);
 
 // utiles.c
+void ft_claen (t_arguments *argument);
 long gettime(t_time_code time_code);
 void precise_usleep(long usec, t_arguments *argument);
 void ft_print_arguments(t_arguments *arg);

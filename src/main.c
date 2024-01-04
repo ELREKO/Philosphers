@@ -12,23 +12,24 @@
 
 #include "../includes/philosophers.h"
 
+
+
 int main(int args, char **arg)
 {
-    t_arguments *arguments;
+    t_arguments arguments;
     
-    arguments = ft_read_arguments(args, arg);
-
-
-
-    
-    if (arguments != NULL)
+    if (ft_read_arguments(&arguments, args, arg))
     {
-        init_data(arguments);
-        dinner_start(arguments);
+        init_data(&arguments);
 
-        ft_print_arguments(arguments);
-        free(arguments->forks);
-        free(arguments->philos);
-        free(arguments);
+
+        dinner_start(&arguments);
+
+        ft_claen(&arguments);
+
+        // ft_print_arguments(arguments);
+        // free(arguments->forks);
+        // free(arguments->philos);
+        // free(arguments);
     }
 }

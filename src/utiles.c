@@ -51,6 +51,24 @@ void precise_usleep(long usec, t_arguments *argument)
 }
 
 
+void ft_claen (t_arguments *argument)
+{
+    t_philo *philo; 
+    int i_count;
+
+    i_count = -1; 
+
+    while (++i_count < argument->l_nbr_philosopher)
+    {
+        philo = argument->philos + i_count,
+        safe_mutex_handel(&philo->philo_mutex, DESTROY);
+    }
+    safe_mutex_handel(&argument->write_mutex, DESTROY);
+    safe_mutex_handel(&argument->arguments_mutex, DESTROY);
+    free(argument->forks);
+    free(argument->philos);
+}
+
 
 void ft_print_arguments(t_arguments *arg)
 {

@@ -15,30 +15,41 @@
 static long ft_char_to_int (char *str);
 static bool is_space(char c);
 static bool ft_check_arg(int args, char **arg);
+static bool ft_check_value_size(t_arguments *arg);
 
-t_arguments *ft_read_arguments(int args, char **arg)
+bool ft_read_arguments(t_arguments *argument, int args, char **arg)
 {
-    t_arguments *argument;
-
     if (ft_check_arg(args, arg) == false)
-        return (NULL);
-    argument = safe_malloc(sizeof(t_arguments), NULL);  
+        return (false);
+    //argument = safe_malloc(sizeof(t_arguments), NULL);  
     //argument = malloc(sizeof(t_arguments));
     argument->l_nbr_philosopher = ft_char_to_int(arg[1]);
     argument->l_die_time = ft_char_to_int(arg[2]) * 1e3;
     argument->l_eat_time = ft_char_to_int(arg[3]) * 1e3;
     argument->l_sleep_time = ft_char_to_int(arg[4]) * 1e3;
-    if (argument->l_die_time < 6e4 || argument ->l_eat_time < 6e4 
-        || argument ->l_sleep_time <6e4)
-    {
-        ft_error(1, "Argument must be bigger then 59!", -1, NULL);
-        return (NULL);
-    }
     if (args == 6)
         argument->l_eat_must = ft_char_to_int(arg[5]);
     else 
         argument->l_eat_must = -1;
-    return argument;
+    if (ft_check_value_size(argument))
+        return (false);
+    return (true);
+}
+
+static bool ft_check_value_size(t_arguments *arg)
+{
+    if (arg->l_nbr_philosopher > PHILO_MAX)
+        printf("More than Max Philos of 200 not allowed!\n");
+    if (arg->l_die_time < 6e4)
+        printf("Min time to die 60ms!\n");
+    if (arg->l_eat_time < 6e4)
+        printf("Min time to eat 60ms!\n");
+    if (arg->l_sleep_time < 6e4)
+        printf("Min time to sleep 60ms!\n");
+    if (arg->l_die_time < 6e4 || arg ->l_eat_time < 6e4 
+        || arg ->l_sleep_time <6e4 || arg->l_nbr_philosopher > PHILO_MAX)
+        return (true);
+    return (false);
 }
 
 static bool ft_check_arg(int args, char **arg)
