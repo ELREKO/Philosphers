@@ -1,10 +1,13 @@
-# Mutex 
-## Was ist Mutex 
-Mutex ist das Handling für die Threads um einen Sicheren Ressourcen Zugriff zu ermöglichen. Das bedeutet das z.B. immer nur ein Thread auf eine Datei Schreiben oder Lesen kann. Die anderen Threads müssen warten bis diese wieder freigebene wird. Somit helfen die Mutex funtionen die Threads besser zu **Syncronisiern** und **Race Conditions** zu vermeiden!
+# Mutex
+## What is Mutex
+Mutex (short for mutual exclusion) is used in threading to ensure safe access to resources. This means that, for example, only one thread can read from or write to a file at any given time. Other threads must wait until the resource is released. Thus, mutex functions help synchronize threads better and prevent race conditions.
 
-Eine Flasch Verwendung verursacht Deadlocks (2 oder mehr Threads warten auf die Freigabe der Resorchen). Daher ist es auch wichtig dies richtig zu haneln.
+Improper use of mutexes can lead to deadlocks (where two or more threads are waiting for resources to be released). Therefore, it is crucial to handle them correctly.
 
-## Was ist es nicht! 
-Das "Hin- und Herschalten" zwischen Threads, oft als Thread-Scheduling bezeichnet, wird vom Betriebssystem und/oder vom Thread-Scheduler gehandhabt. Dieser Prozess entscheidet, welcher Thread zu welchem Zeitpunkt die CPU-Zeit bekommt.
+## What it is not!
+The process of switching between threads, often referred to as thread scheduling, is managed by the operating system and/or the thread scheduler. This process determines which thread receives CPU time at any given moment.
 
-![Mutex](pic/Mutex.png)
+<p align="center">
+  <img src="pic/mutex.png" alt="mutex">
+</p>
+

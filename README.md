@@ -1,80 +1,76 @@
+
 <p align="center">
-  <img src="doc/pic/main_pic_dinner_phiosopher.png" alt="Beschreibung des Bildes">
+  <img src="doc/pic/main_pic_dinner_phiosopher.png" alt="Description of the image">
 </p>
 
-# Philosophers [Projekt](doc/PDF/Philosphers_subject.pdf)
+# Philosophers [Project](doc/PDF/Philosphers_subject.pdf)
 
-## Überblick
+## Overview
 
-Dieses Projekt ist Teil der 42Schule und simuliert das klassische Problem der Philosophen. Das Problem beschreibt eine Situation, in der mehrere Philosophen abwechselnd denken und essen, jedoch begrenzte Ressourcen (Gabeln) teilen müssen. Ziel ist es, eine Lösung zu finden, die sowohl Deadlocks als auch Verhungern vermeidet.
+This project is part of the 42School and simulates the classic problem of the philosophers. The problem describes a situation where several philosophers alternately think and eat, but must share limited resources (forks). The goal is to find a solution that avoids both deadlocks and starvation.
 
-## Lernziele des Projekts
+## Project Objectives
 
-- Verstehen und Implementieren von Synchronisationsmechanismen.
-- Umgang mit Nebenläufigkeit und paralleler Programmierung.
-- Sicherstellen, dass das Programm Deadlocks und Verhungern der Philosophen verhindert.
+- Understanding and implementing synchronization mechanisms.
+- Handling concurrency and parallel programming.
+- Ensuring that the program prevents deadlocks and starvation of the philosophers.
 
 ## Installation
 
-Klonen Sie das Repository:
+Clone the repository:
    ```sh
    git clone https://github.com/ELREKO/Philosphers.git
    cd philosopherprojekt
    ```
 
-Kompilieren Sie das Projekt:
+Compile the project:
    ```sh
    make
    ```
 
-Nach Programmänderungen
+After making changes to the program:
    ```sh
    make re
    ```
 
+## Execution
 
-
-## Ausführung
-
-Nach der Kompilierung können Sie das Programm mit folgendem Befehl ausführen:
+After compilation, you can run the program with the following command:
 
 ```shell
-./philo <Anzahl_der_Philosophen>  <Zeit_bis_Philsoph_stirbt> <Zeit_zum_essen> <Zeit_die_ein_Phiosph_schlaffen_muss> <optional: Anzahl_die_ein_Philsoph_haben_muss>
+./philo <number_of_philosophers> <time_to_die> <time_to_eat> <time_to_sleep> <optional: number_of_meals_each_philosopher_must_have>
 ```
 
-Beispiel:
+Example:
 ```sh
 ./philo 5 200 100 70
 ```
-Dies startet eine Simulation mit 5 Philosophen, wobei jeder Philosoph 200 Millisekunden hat bis er stirbt, 100 Millisekunden zum essen benötigt, und 70Millisekunden mindesten schlaffen muss. 
+This starts a simulation with 5 philosophers, where each philosopher has 200 milliseconds until they die, needs 100 milliseconds to eat, and must sleep for at least 70 milliseconds.
 
-Beispiel:
+Example:
 ```sh
 ./philo 5 200 100 70 2
 ```
-Das sind die selben Parmeter wie oben nur mit der Erweiterung das jedes Philosph mindesten 2 mal essen muss. 
+These are the same parameters as above, with the addition that each philosopher must eat at least 2 times.
 
-## Funktionsweise
+## Operation
 
-Jeder Philosoph durchläuft die folgenden Zustände:
+Each philosopher goes through the following states:
 
-1. **Denken**: Der Philosoph denkt für eine bestimmte Zeit.
-2. **Hungrig**: Der Philosoph versucht, beide Gabeln zu greifen.
-3. **Essen**: Der Philosoph isst für eine bestimmte Zeit.
+1. **Thinking**: The philosopher thinks for a certain period.
+2. **Hungry**: The philosopher tries to grab both forks.
+3. **Eating**: The philosopher eats for a certain period.
 
 <p align="center">
-  <img src="doc/pic/Programm_resualt.png" alt="Beschreibung des Bildes">
+  <img src="doc/pic/Programm_resualt.png" alt="Description of the image">
 </p>
 
+### Synchronization
 
-### Synchronisation
+- Forks are implemented as binary semaphores.
+- Each philosopher first grabs the left fork and then the right fork (or vice versa, depending on the implementation).
+- The synchronization ensures that no two philosophers use the same fork simultaneously.
 
-- Gabeln werden als binäre Semaphore implementiert.
-- Jeder Philosoph greift zuerst nach der linken und dann nach der rechten Gabel (oder umgekehrt, je nach Implementierung).
-- Die Synchronisation stellt sicher, dass keine zwei Philosophen gleichzeitig dieselbe Gabel benutzen.
+### Further Information
 
-
-### Weiter Informationen
-[Unterschied zwischen Thread und Process](doc/Proccess_vs_Thread.md)
-
-
+[Difference between Thread and Process](doc/Proccess_vs_Thread.md)

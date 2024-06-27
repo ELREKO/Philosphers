@@ -1,20 +1,23 @@
 # pthread_create
-### header 
+## header 
 `#include <pthread.h>`
 
-### Syntax
+## Syntax
 ```c 
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void *), void *arg);
 ```
 
-### Parameter
-- `pthread_t`: - Datentyp von der POSIX-Thread-Bibliothek (Pthreads) bereitgestellt zur Identifizierung des Threads. 
-- `const pthread_attr_t`: bei **NULL** verwendung der Standartatributte -> andernfalls mit `pthread_attr_t` setzen der Atribute -> hier aber als externe Funktion nicht erlaubt! 
-- `void *(*start_routine)(void *)`: Ein Zeiger auf die Funktion, die der Thread ausführen soll. Diese Funktion muss einen Zeiger auf void als Argument nehmen und einen Zeiger auf void zurückgeben.
-- `*void arg`: Ein Zeiger auf Argumente, die an die Startfunktion übergeben werden sollen. Dies kann NULL sein, wenn keine Argumente erforderlich sind.
+## Parameters
 
-### Rückgabewert 
+- `pthread_t`: Data type provided by the POSIX Threads (Pthreads) library for identifying the thread.
+- `const pthread_attr_t *`: If **NULL**, default attributes are used. Otherwise, specify attributes using `pthread_attr_t`, but this is not allowed as an external function!
+- `void *(*start_routine)(void *)`: A pointer to the function that the thread should execute. This function must take a pointer to void as an argument and return a pointer to void.
+- `void *arg`: A pointer to arguments to be passed to the start function. This can be NULL if no arguments are needed.
+
+## Rückgabewert 
 - **0** bei success
 
 ---
 < [back to funtion overview](../function.md)
+
+< [back to main](/)
