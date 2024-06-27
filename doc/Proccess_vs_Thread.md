@@ -3,7 +3,7 @@
 
 - Ein oder mehrer **Thread** sind ein Bestandteil eines Processes. Da sie im Gegensatz zu den Processen nicht Isoliert sind kann ein Fehlerhafter Thread auswirkungen auf die anderen Threads in einem Process haben. 
 
-### Übersicht 
+## Übersicht 
 
 
 | Aspekt               | Prozesse                                    | Threads                                   |
@@ -19,7 +19,7 @@
 ![Process vs Thread](pic/Proccec_vs_thread.png)
 ---
 
-### Unterschiede zwichen User- und Kernel Thread
+## Unterschiede zwichen User- und Kernel Thread
 
 | Eigenschaften          | Kernel-Threads                               | User-Level Threads                            |
 |------------------------|----------------------------------------------|-----------------------------------------------|
@@ -34,13 +34,17 @@
 ![user- vs kernel thread](pic/user_vs_kernel_thread.png)
 
 
-### Probleme bei Multithreading
+## Probleme bei Multithreading
 
-#### Synchronisation
+### Synchronisation
 - z.B. wenn meherer Threads auf die Selbe ausgabe schrieben kommt es zu vermischter oder unvollständiger Ausgabe --> Verwendung von Mutexe (Mutual Exclusion Locks), Semaphore, oder bedingten Variablen
 
-#### Race Conditions 
+### Race Conditions 
 Die Auswirkungen Fehlender Syncronisation sind die Race Conditions. Weil 2 oder mehrer Thread auf die selbe Rescouce zugreifen wollten. 
 
 #### Deadlocks
-Zustand wenn Processe oder Threads durch gegenseitig Blockierung in Ihrem jeweiligen Zustand gefangen sind. z.B. duch das gegenseitige Warten das diese Ihrer Resourcen Freigeben. 
+Zustand wenn Processe oder Threads durch gegenseitig Blockierung in Ihrem jeweiligen Zustand gefangen sind. z.B. duch das gegenseitige Warten das diese Ihrer Resourcen Freigeben.
+
+## Weitere Inforamtionen 
+- [mutex](mutex.md)
+- [functionsberscheibung](function.md)

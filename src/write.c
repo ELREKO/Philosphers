@@ -18,13 +18,13 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 	{
 		if ((TAKE_FIRST_FORK == status || TAKE_SECOND_FORK == status)
 			&& !simualte_finished(philo->arguments))
-			printf("%-6ld %d has taken a fork\n", elapsed, philo->id);
+			printf("%-6ld %d has taken a fork	🍴\n", elapsed, philo->id);
 		else if (EATING == status && !simualte_finished(philo->arguments))
-			printf(B"%-6ld %d is eating\n"RST, elapsed, philo->id);
+			printf(B"%-6ld %d is eating		🍖\n"RST, elapsed, philo->id);
 		else if (SLEEPING == status && !simualte_finished(philo->arguments))
-			printf(Y"%-6ld %d is sleeping\n"RST, elapsed, philo->id);
+			printf(Y"%-6ld %d is sleeping		😴\n"RST, elapsed, philo->id);
 		else if (THINKING == status && !simualte_finished(philo->arguments))
-			printf(G"%-6ld %d is thinking\n"RST, elapsed, philo->id);
+			printf(G"%-6ld %d is thinking		🤔\n"RST, elapsed, philo->id);
 		else if (DIED == status)
 			printf(RED"%-6ld %d died\n"RST, elapsed, philo->id);
 	}
