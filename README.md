@@ -9,6 +9,11 @@
 
 This project is part of the 42School and simulates the classic problem of the philosophers. The problem describes a situation where several philosophers alternately think and eat, but must share limited resources (forks). The goal is to find a solution that avoids both deadlocks and starvation.
 
+<p align="center">
+  <img src="doc/pic/example_philosophers_sitting.png" alt="philosophers_sitting">
+</p>
+
+
 ## Project Objectives
 
 - Understanding and implementing synchronization mechanisms.
